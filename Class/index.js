@@ -35,18 +35,18 @@ const server = http.createServer((req, res) => {
     //if url has read file perform read operation
     fs.readFile("Message.txt", (err, data) => {
       if (err) {
-        response.end('<h1 style="color:red">Unable to read file</h1>');
+        res.end('<h1 style="color:red">Unable to read file</h1>');
       } else {
-        response.write('<h1 style="color:green">File Read Successfully</h1>');
-        response.end(<h1 style="color:blue">${data}</h1>);
+        res.write('<h1 style="color:green">File Read Successfully</h1>');
+        res.end(<h1 style="color:blue">${data}</h1>);
       }
     });
   } else if (url.includes("writeFile")) {
     fs.writeFile("Message.txt", "I want to write this into file", (err) => {
       if (err) {
-        response.end('<h1 style="color:red">Unable to write file</h1>');
+        res.end('<h1 style="color:red">Unable to write file</h1>');
       } else {
-        response.end('<h1 style="color:green">File Write Successfully</h1>');
+        res.end('<h1 style="color:green">File Write Successfully</h1>');
       }
     });
   } else if (url.includes("updateFile")) {
@@ -55,32 +55,30 @@ const server = http.createServer((req, res) => {
       "\nI want to update this in to file",
       (err) => {
         if (err) {
-          response.end('<h1 style="color:red">Unable to update file</h1>');
+          res.end('<h1 style="color:red">Unable to update file</h1>');
         } else {
-          response.end(
-            '<h1 style="color:green">File Updated Successfully</h1>'
-          );
+          res.end('<h1 style="color:green">File Updated Successfully</h1>');
         }
       }
     );
   } else if (url.includes("renameFile")) {
     fs.rename("Message.txt", "Greet.txt", (err) => {
       if (err) {
-        response.end('<h1 style="color:red">Unable to rename file</h1>');
+        res.end('<h1 style="color:red">Unable to rename file</h1>');
       } else {
-        response.end('<h1 style="color:green">File Renamed Successfully</h1>');
+        res.end('<h1 style="color:green">File Renamed Successfully</h1>');
       }
     });
   } else if (url.includes("deleteFile")) {
     fs.unlink("Greet.txt", (err) => {
       if (err) {
-        response.end('<h1 style="color:red">Unable to delete file</h1>');
+        res.end('<h1 style="color:red">Unable to delete file</h1>');
       } else {
-        response.end('<h1 style="color:green">File Deleted Successfully</h1>');
+        res.end('<h1 style="color:green">File Deleted Successfully</h1>');
       }
     });
   } else {
-    response.end("Welcome to File System");
+    res.end("Welcome to File System");
   }
 });
 
