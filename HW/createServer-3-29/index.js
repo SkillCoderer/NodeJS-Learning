@@ -3,7 +3,7 @@ const fs = require("fs");
 const urlModule = require("url");
 
 let server = http.createServer((req, res) => {
-  let { url, method } = req;
+  let { url } = req;
   let parsedURL = urlModule.parse(url, true);
   let { pathname, query } = parsedURL;
   let { name, country } = query;
