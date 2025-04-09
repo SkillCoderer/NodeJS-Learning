@@ -37,6 +37,32 @@ server.post("/getAccess", customMiddleware, (req, res) => {
   res.send(`${req.body.name}, welcome to the Services!`);
 });
 
+// Class 4/8/2025
+
+// Age Verification Middleware
+function ageVerifyMiddleware(req, res, next) {
+  if (req.body.age < 18) {
+    res.send("You need to be atleast 18 years-old");
+  } else {
+    console.log("Proceed to Next Step");
+    next(); // This function wil handover the Control to the Next Middleware in the order/Sequence
+  }
+}
+
+// FileType Verification MiddlewareW
+const fileTypeVerify = (req, res, next) => {
+  const { query } = req;
+  // RegEx -> Regular Expressions
+  const fileTypePattern = /^(text|json|html)$/;
+  if (fileTypePattern.test(fileType)) {
+    // Test Method -> Will compare the RegEx Pattern against the string; returns True or False
+    console.log("Requested File-Type Exists!");
+    next();
+  } else {
+    res.send("File type does not Exist.");
+  }
+};
+
 // Server Listening
 server.listen(port, (err) => {
   if (err) {
@@ -45,3 +71,8 @@ server.listen(port, (err) => {
     console.log(`Server Started at Port ${port}`);
   }
 });
+
+module.exports = {
+  ageVerifyMiddleware,
+  fileTypeVerify,
+};
