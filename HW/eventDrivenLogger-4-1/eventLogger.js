@@ -5,9 +5,10 @@ const eventEmitter = require("events").EventEmitter;
 const EEI = new eventEmitter();
 
 EEI.on("info", (msg) => {
-  const logMsg = `[Info] - ${msg}`;
+  const timestamp = new Date().toISOString();
+  const logMsg = `[Info] - ${msg} @ ${timestamp}\n`;
   console.log(logMsg);
-  fs.appendFile("info.txt", logMsg, (err) => {
+  fs.appendFile("logs.txt", logMsg, (err) => {
     if (err) {
       console.error("Error Occured");
     } else {
@@ -16,9 +17,10 @@ EEI.on("info", (msg) => {
   });
 });
 EEI.on("warn", (msg) => {
-  const logMsg = `[Warn] - ${msg}`;
+  const timestamp = new Date().toISOString();
+  const logMsg = `[Warn] - ${msg} @ ${timestamp}\n`;
   console.warn(logMsg);
-  fs.appendFile("warn.txt", logMsg, (err) => {
+  fs.appendFile("logs.txt", logMsg, (err) => {
     if (err) {
       console.error("Error Occured");
     } else {
@@ -27,9 +29,10 @@ EEI.on("warn", (msg) => {
   });
 });
 EEI.on("error", (msg) => {
-  const logMsg = `[Error] - ${msg}`;
+  const timestamp = new Date().toISOString();
+  const logMsg = `[Error] - ${msg} @ ${timestamp}\n`;
   console.error(logMsg);
-  fs.appendFile("error.txt", logMsg, (err) => {
+  fs.appendFile("logs.txt", logMsg, (err) => {
     if (err) {
       console.error("Error Occured");
     } else {
