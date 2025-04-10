@@ -18,36 +18,28 @@ server.use(express.json()); // .use will make sure of the Middleware Function; E
 server.use(bodyParser.text()); // This Middleware will recognize the text format in the request body
 
 // Route Level Middleware
-function customMiddleware(req, res, next) {
-  if (req.body.age < 18) {
-    res.send("You need to be atleast 18 years-old");
+function ageVerifyMiddleware(request, response, next) {
+  if (request.query.age < 18) {
+    response.send("You need to be atleast 18 years");
   } else {
-    console.log("Proceed to Next Step");
+    console.log("Proceed to Next step");
     next(); // This function wil handover the Control to the Next Middleware in the order/Sequence
   }
 }
 
 // Get Method
-server.get("/getData", (req, res) => {
-  res.send(req.body + " this is the request body value");
-});
+// server.get("/getData", (req, res) => {
+//   res.send(req.body + " this is the request body value");
+// });
 
-// Post Method
-server.post("/getAccess", customMiddleware, (req, res) => {
-  res.send(`${req.body.name}, welcome to the Services!`);
-});
+// // Post Method
+// server.post("/getAccess", customMiddleware, (req, res) => {
+//   res.send(`${req.body.name}, welcome to the Services!`);
+// });
 
 // Class 4/8/2025
 
 // Age Verification Middleware
-function ageVerifyMiddleware(req, res, next) {
-  if (req.body.age < 18) {
-    res.send("You need to be atleast 18 years-old");
-  } else {
-    console.log("Proceed to Next Step");
-    next(); // This function wil handover the Control to the Next Middleware in the order/Sequence
-  }
-}
 
 // FileType Verification MiddlewareW
 const fileTypeVerify = (req, res, next) => {
@@ -64,13 +56,13 @@ const fileTypeVerify = (req, res, next) => {
 };
 
 // Server Listening
-server.listen(port, (err) => {
-  if (err) {
-    console.error("Something went Wrong :c");
-  } else {
-    console.log(`Server Started at Port ${port}`);
-  }
-});
+// server.listen(port, (err) => {
+//   if (err) {
+//     console.error("Something went Wrong :c");
+//   } else {
+//     console.log(`Server Started at Port ${port}`);
+//   }
+// });
 
 module.exports = {
   ageVerifyMiddleware,
