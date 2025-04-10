@@ -1,0 +1,29 @@
+<!-- CLass 4/9/2025 -->
+
+<!-- Views -> It is a folder which contains Dynamic HTML Files -->
+<!-- Template Engine -> It is a tool which helps us to create Dynamic HTML Files -->
+<!-- <!-- Python -> Jinja -->
+<!-- <!-- Java -> Thymeleaf -->
+<!-- <!-- NodeJS -> EJS (we are using), Pug, Mustache, Handlebars, etc. -->
+<!-- <!-- EJS Syntax -> The syntax consists of Taglets which resemble the HTML Tags -->
+<!-- <!-- Taglet -> It is a special syntax which is used to create Dynamic HTML Files -->
+<!-- <!-- <!-- <%= %> -> Output Taglet -->
+<!-- <!-- <!-- <%- %> -> Non-Escaping Taglet -->
+<!-- <!-- <!-- <% %> -> Conditional / Loop Taglet -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>This is the Frst</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 class="first-class">Welcome to <%=name%></h1>
+    <p><%- rawHtmlContent%></p>
+    <% if (name === 'Ram') { %> <% for (let i = 0; i < name.length; i++) { %>
+    <%= name[i] %><br />
+    <% } %> <% } else { %> <%= 'Name is Not Matching' %> <% } %>
+  </body>
+</html>

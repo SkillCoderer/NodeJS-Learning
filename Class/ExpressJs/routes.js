@@ -2,7 +2,12 @@
 
 // Creating a Router and Assigning Routes
 const router = require("express").Router(); // Creates a router
-const { handler1, handler2, fthandler } = require("./controllers");
+const {
+  handler1,
+  handler2,
+  fthandler,
+  templateHandler,
+} = require("./controllers");
 
 // Class 4/8/2025
 
@@ -20,5 +25,10 @@ router.post("/postPath", handler2);
 
 // Get Request for Sending out a File
 router.get("/requestFile", ageVerifyMiddleware, fileTypeVerify, fthandler);
+
+// Class 4/9/2025
+
+// Get the Template on Making Request
+router.get("/getTemplate", templateHandler);
 
 module.exports = router;

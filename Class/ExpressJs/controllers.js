@@ -29,8 +29,22 @@ const fthandler = (req, res) => {
   }
 };
 
+// Class 4/9/2025
+
+// Handler for Dynamic HTML Page
+const templateHandler = (req, res) => {
+  console.log("Requested for a Template");
+  const htmlString = "<strong>This is Non-Escaping taglet</strong>";
+  // Use Render Method to create and send Dynamic HTML Files
+  res.render(`${__dirname}/views/index.ejs`, {
+    name: "Ram Satti",
+    rawHtmlContent: htmlString,
+  });
+};
+
 module.exports = {
   handler1,
   handler2,
   fthandler,
+  templateHandler,
 };

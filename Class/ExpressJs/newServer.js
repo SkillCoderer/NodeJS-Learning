@@ -13,8 +13,14 @@ const server = express();
 const myRouter = require("./routes"); // Middleware that handles Routes
 const port = 5050;
 
+// Class 4/9/2025
+
 // Make server use the Router
 server.use(myRouter);
+server.set("view engine", "ejs"); // Setting to make the Server understand that EJS is the Template Engine
+
+// Use express.static for sending CSS, Images, Text Files, etc.
+server.use(express.static(`${__dirname}/public`));
 
 server.listen(port, (err) => {
   if (err) {
