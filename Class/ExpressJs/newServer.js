@@ -11,7 +11,7 @@
 const express = require("express");
 const server = express();
 const myRouter = require("./routes"); // Middleware that handles Routes
-const port = 5050;
+const dotenv = require("dotenv").config(); // Import the dotenv Package in the Project
 
 // Class 4/9/2025
 
@@ -22,10 +22,12 @@ server.set("view engine", "ejs"); // Setting to make the Server understand that 
 // Use express.static for sending CSS, Images, Text Files, etc.
 server.use(express.static(`${__dirname}/public`));
 
-server.listen(port, (err) => {
+// Class 4/10/2025
+
+server.listen(process.env.PORT, (err) => {
   if (err) {
     console.warn("Something went Wrong :c");
   } else {
-    console.info(`Server Started at Port ${port}`);
+    console.info(`Server Started at Port ${process.env.PORT}`);
   }
 });
