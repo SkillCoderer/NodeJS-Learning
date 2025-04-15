@@ -1,0 +1,54 @@
+// Class 4/14/20205
+
+// JSON Datatypes:
+// // Accepted:
+// // // String
+// // // Number
+// // // Boolean
+// // // Objects
+// // // // Arrays (they are a type of Object)
+// // // Null
+// // Non-Accepted:
+// // // Functions
+// // // Undefined
+// // // Date Object
+
+// BSON -> Binary JSON
+// // Binary (format) will let us store in Efficient way;
+// // Additional Datatypes BSON has (that JSON doesn't)
+// // // ObjectID
+// // // Double
+// // // Timestamp
+// // // Binary Datatypes
+
+// Relational Database -> Holds the data inside tables.
+// // Ex: MySQL, PostgreSQL, MSSQL, etc.
+// // Ex: Database -> Tables -> Data
+// Non-Relational Database -> Holds data in the form of JSON Objects.
+// // Ex: MongoDB, CouchDB, Sequalize, etc.
+// // // Ex:
+// // // {
+// // //    "name": "Ram Satti",
+// // //    "class": 7
+// // // }
+
+// MongoDB is a Non-Relational Database that has Collections & Documents
+// // Databse -> Notebook
+// // Collections -> Page
+// // Documents -> What we write on Pages
+
+// Atlas (Cloud) -> Cloud Services provided by MongoDB where the DB's are stored at somewhere else
+// Compass (Local) -> Beginner Friendly tool that helps you to have DB's in your local system.
+// MongoShell -> CLI (Command Line Interface) where we put some commands instead of using UI inorder to create DB or Collections.
+
+// Creating a DB -> use {dbname}
+
+// CRUD Operations in MongoDB
+// // C -> Create; db.{collectionName}.insertOne({
+    name:"Ram Satti",
+    age: 13,
+    location: "USA"
+})
+// // R -> Read;
+// // U -> Update;
+// // D -> Delete;
