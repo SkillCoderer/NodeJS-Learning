@@ -1,4 +1,4 @@
-// Class 4/14/20205
+// Class 4/14/2025
 
 // JSON Datatypes:
 // // Accepted:
@@ -33,7 +33,7 @@
 // // // }
 
 // MongoDB is a Non-Relational Database that has Collections & Documents
-// // Databse -> Notebook
+// // Database -> Notebook
 // // Collections -> Page
 // // Documents -> What we write on Pages
 
@@ -44,11 +44,32 @@
 // Creating a DB -> use {dbname}
 
 // CRUD Operations in MongoDB
-// // C -> Create; db.{collectionName}.insertOne({
+// // C -> Create; db.{collectionName}.(insertOne or insertMany)({
     name:"Ram Satti",
     age: 13,
     location: "USA"
 })
-// // R -> Read;
-// // U -> Update;
+// // R -> Read; 
+// // // db.{collectionName}.find(); if specific -> .find({name: 'Ram'})
+// // // db.{collectionName}.findOne({name : "Ram"}, {name: 1, _id: 0}) -> By Default return first Object in Collection; only give name, don't show id. Only one 0 value.
+// // U -> Update; db.{collectionName}.(updateOne or updateMany)(
+    {name: "Ram"}, -> Value wanted to be Changed
+    {$set:{age:20}} -> New Value
+    )
 // // D -> Delete;
+
+// Class 4/15/2025
+
+// MongoDB Datatypes
+// // String
+// // Numerical
+// // // Int32 -> Stores integers that can be stored in 32 Bits of Storage
+// // // Long -> Stores Float that can be stored in 64 Bits of Storage
+// // // Double -> Stores integers that can be stored in 64 Bits of Storage
+// // Date
+// // // Date() -> Gives us the Local date String 
+// // // new Date() & ISODate()-> Standard Date in the ISO Format
+// // // // Standard Date -> A date format that adheres to the ISO 8601 standard, commonly used for international date representation.
+// // // // ISO Format -> Internal Organization for Standardization
+// // Boolean
+// // Array
