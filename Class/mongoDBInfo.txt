@@ -43,6 +43,8 @@
 
 // Creating a DB -> use {dbname}
 
+// Class 4/15/2025
+
 // CRUD Operations in MongoDB
 // // C -> Create; db.{collectionName}.(insertOne or insertMany)({
     name:"Ram Satti",
@@ -56,9 +58,7 @@
     {name: "Ram"}, -> Value wanted to be Changed
     {$set:{age:20}} -> New Value
     )
-// // D -> Delete;
-
-// Class 4/15/2025
+// // D -> Delete;  db.{collectionName}.(deleteOne or deleteMany)_
 
 // MongoDB Datatypes
 // // String
@@ -73,3 +73,55 @@
 // // // // ISO Format -> Internal Organization for Standardization
 // // Boolean
 // // Array
+
+// Class 4/16/2025
+
+// Operators -> Special symbols or keywords used to perform operations on data, such as comparisons, logical operations, or data manipulation.
+
+// // Logical -> and, or, not, nor 
+// // // and -> both queries true
+// // // // db.studentData.find({
+                $and : [
+                {name: 'Ram Sqtti'},
+                {grade: 'B'}
+            ]
+            })
+// // // or -> one of queries true
+// // // // db.studentData.find({
+                $or : [
+                {name: 'Ram Sqtti'},
+                {grade: 'B'}
+            ]
+            })
+// // // not -> opposite of
+// // // nor -> neither of the conditions should be true; opposite of and
+// // // // db.studentData.find({
+                $nor : [
+                {name: 'Ram Satti'},
+                {grade: 'B'}
+            ]
+            })
+
+// // Comparison -> eq, ne, gt, lt, gte, lte, in, nin
+// // // Equals (eq) -> Return documents which are equal to param
+// // // // db.{collectionName}.find({field: {$eq: value}})
+// // // Not Equals (ne) -> Not Return documents which are equal to param
+// // // // db.{collectionName}.find({field: {$ne: value}})
+// // // Greater than (gt) -> Return documents where field is greater than param
+// // // // db.{collectionName}.find({field: {$gt: value}})
+// // // Less than (lt) -> Return documents where field is less than param
+// // // // db.{collectionName}.find({field: {$lt: value}})
+// // // Greater than or Equal to (gte) -> Return documents where field is greater than or equal to param
+// // // // db.{collectionName}.find({field: {$gte: value}})
+// // // Less than or Equal to (lte) -> Return documents where field is less than or equal to param
+// // // // db.{collectionName}.find({field: {$lte: value}})
+// // // includes (in) -> Return documents where field matches any value in the array
+// // // // db.{collectionName}.find({field: {$in: [value1, value2, value3]}})
+// // // not includes (nin) -> Return documents where field does not match any value in the array
+// // // // db.collect{collectionName}ion.find({field: {$nin: [value1, value2, value3]}})
+
+// // Update -> set, unset
+// // // set -> Updates the value of a field to the specified value
+// // // // db.{collectionName}.updateOne({field: value}, {$set: {fieldToUpdate: newValue}})
+// // // unset -> Removes the specified field from a document
+// // // // db.{collectionName}.updateOne({field: value}, {$unset: {fieldToRemove: ""}})
