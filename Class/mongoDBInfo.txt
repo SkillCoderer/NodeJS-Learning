@@ -1,127 +1,177 @@
-// Class 4/14/2025
+===========================================
+Class 4/14/2025
+===========================================
 
-// JSON Datatypes:
-// // Accepted:
-// // // String
-// // // Number
-// // // Boolean
-// // // Objects
-// // // // Arrays (they are a type of Object)
-// // // Null
-// // Non-Accepted:
-// // // Functions
-// // // Undefined
-// // // Date Object
+JSON Datatypes (Accepted):
+- String
+- Number
+- Boolean
+- Objects
+  - Arrays (a type of Object)
+- Null
 
-// BSON -> Binary JSON
-// // Binary (format) will let us store in Efficient way;
-// // Additional Datatypes BSON has (that JSON doesn't)
-// // // ObjectID
-// // // Double
-// // // Timestamp
-// // // Binary Datatypes
+JSON Datatypes (Not Accepted):
+- Functions
+- Undefined
+- Date Object
 
-// Relational Database -> Holds the data inside tables.
-// // Ex: MySQL, PostgreSQL, MSSQL, etc.
-// // Ex: Database -> Tables -> Data
-// Non-Relational Database -> Holds data in the form of JSON Objects.
-// // Ex: MongoDB, CouchDB, Sequalize, etc.
-// // // Ex:
-// // // {
-// // //    "name": "Ram Satti",
-// // //    "class": 7
-// // // }
+BSON (Binary JSON):
+- Stores data in a binary format for efficiency.
+- Additional Datatypes in BSON (not in JSON):
+  - ObjectID
+  - Double
+  - Timestamp
+  - Binary Datatypes
 
-// MongoDB is a Non-Relational Database that has Collections & Documents
-// // Database -> Notebook
-// // Collections -> Page
-// // Documents -> What we write on Pages
+-------------------------------------------
+Relational Database:
+- Stores data in tables (e.g., MySQL, PostgreSQL, MSSQL).
+- Structure: Database -> Tables -> Data
 
-// Atlas (Cloud) -> Cloud Services provided by MongoDB where the DB's are stored at somewhere else
-// Compass (Local) -> Beginner Friendly tool that helps you to have DB's in your local system.
-// MongoShell -> CLI (Command Line Interface) where we put some commands instead of using UI inorder to create DB or Collections.
+Non-Relational Database:
+- Stores data as JSON objects (e.g., MongoDB, CouchDB).
+Example:
+{
+  "name": "Ram Satti",
+  "class": 7
+}
 
-// Creating a DB -> use {dbname}
+MongoDB Overview:
+- Non-Relational Database with Collections & Documents
+  - Database -> Notebook
+  - Collections -> Page
+  - Documents -> Content on Pages
 
-// Class 4/15/2025
+Tools:
+- Atlas (Cloud): Cloud service for MongoDB databases.
+- Compass (Local): Beginner-friendly GUI for local databases.
+- MongoShell: CLI for database and collection management.
 
-// CRUD Operations in MongoDB
-// // C -> Create; db.{collectionName}.(insertOne or insertMany)({
-    name:"Ram Satti",
-    age: 13,
-    location: "USA"
+Creating a Database:
+use {dbname}
+
+===========================================
+Class 4/15/2025
+===========================================
+
+CRUD Operations in MongoDB:
+
+Create:
+db.{collectionName}.insertOne({
+  name: "Ram Satti",
+  age: 13,
+  location: "USA"
 })
-// // R -> Read; 
-// // // db.{collectionName}.find(); if specific -> .find({name: 'Ram'})
-// // // db.{collectionName}.findOne({name : "Ram"}, {name: 1, _id: 0}) -> By Default return first Object in Collection; only give name, don't show id. Only one 0 value.
-// // U -> Update; db.{collectionName}.(updateOne or updateMany)(
-    {name: "Ram"}, -> Value wanted to be Changed
-    {$set:{age:20}} -> New Value
-    )
-// // D -> Delete;  db.{collectionName}.(deleteOne or deleteMany)_
+db.{collectionName}.insertMany([...])
 
-// MongoDB Datatypes
-// // String
-// // Numerical
-// // // Int32 -> Stores integers that can be stored in 32 Bits of Storage
-// // // Long -> Stores Float that can be stored in 64 Bits of Storage
-// // // Double -> Stores integers that can be stored in 64 Bits of Storage
-// // Date
-// // // Date() -> Gives us the Local date String 
-// // // new Date() & ISODate()-> Standard Date in the ISO Format
-// // // // Standard Date -> A date format that adheres to the ISO 8601 standard, commonly used for international date representation.
-// // // // ISO Format -> Internal Organization for Standardization
-// // Boolean
-// // Array
+Delete:
+db.{collectionName}.deleteOne(...)
+db.{collectionName}.deleteMany(...)
 
-// Class 4/16/2025
+MongoDB Datatypes:
+- String
+- Numerical
+  - Int32 -> Stores integers in 32 Bits of storage
+  - Long  -> Stores float in 64 Bits of storage
+  - Double -> Stores integers in 64 Bits of storage
+- Date
+  - Date() -> Gives local date string
+  - new Date(), ISODate() -> Standard ISO 8601 format
+- Boolean
+- Array
 
-// Operators -> Special symbols or keywords used to perform operations on data, such as comparisons, logical operations, or data manipulation.
+===========================================
+Class 4/16/2025
+===========================================
 
-// // Logical -> and, or, not, nor 
-// // // and -> both queries true
-// // // // db.studentData.find({
-                $and : [
-                {name: 'Ram Sqtti'},
-                {grade: 'B'}
-            ]
-            })
-// // // or -> one of queries true
-// // // // db.studentData.find({
-                $or : [
-                {name: 'Ram Sqtti'},
-                {grade: 'B'}
-            ]
-            })
-// // // not -> opposite of
-// // // nor -> neither of the conditions should be true; opposite of and
-// // // // db.studentData.find({
-                $nor : [
-                {name: 'Ram Satti'},
-                {grade: 'B'}
-            ]
-            })
+Operators:
+Used to perform operations on data (comparisons, logic, manipulation)
 
-// // Comparison -> eq, ne, gt, lt, gte, lte, in, nin
-// // // Equals (eq) -> Return documents which are equal to param
-// // // // db.{collectionName}.find({field: {$eq: value}})
-// // // Not Equals (ne) -> Not Return documents which are equal to param
-// // // // db.{collectionName}.find({field: {$ne: value}})
-// // // Greater than (gt) -> Return documents where field is greater than param
-// // // // db.{collectionName}.find({field: {$gt: value}})
-// // // Less than (lt) -> Return documents where field is less than param
-// // // // db.{collectionName}.find({field: {$lt: value}})
-// // // Greater than or Equal to (gte) -> Return documents where field is greater than or equal to param
-// // // // db.{collectionName}.find({field: {$gte: value}})
-// // // Less than or Equal to (lte) -> Return documents where field is less than or equal to param
-// // // // db.{collectionName}.find({field: {$lte: value}})
-// // // includes (in) -> Return documents where field matches any value in the array
-// // // // db.{collectionName}.find({field: {$in: [value1, value2, value3]}})
-// // // not includes (nin) -> Return documents where field does not match any value in the array
-// // // // db.collect{collectionName}ion.find({field: {$nin: [value1, value2, value3]}})
+Logical Operators:
+- $and -> both queries must be true
+  db.studentData.find({
+    $and: [
+      {name: 'Ram Sqtti'},
+      {grade: 'B'}
+    ]
+  })
 
-// // Update -> set, unset
-// // // set -> Updates the value of a field to the specified value
-// // // // db.{collectionName}.updateOne({field: value}, {$set: {fieldToUpdate: newValue}})
-// // // unset -> Removes the specified field from a document
-// // // // db.{collectionName}.updateOne({field: value}, {$unset: {fieldToRemove: ""}})
+- $or -> at least one query must be true
+  db.studentData.find({
+    $or: [
+      {name: 'Ram Sqtti'},
+      {grade: 'B'}
+    ]
+  })
+
+- $not -> opposite of the condition
+- $nor -> neither condition should be true
+  db.studentData.find({
+    $nor: [
+      {name: 'Ram Satti'},
+      {grade: 'B'}
+    ]
+  })
+
+Comparison Operators:
+- $eq -> Equals
+  db.{collectionName}.find({field: {$eq: value}})
+
+- $ne -> Not Equals
+  db.{collectionName}.find({field: {$ne: value}})
+
+- $gt -> Greater Than
+  db.{collectionName}.find({field: {$gt: value}})
+
+- $lt -> Less Than
+  db.{collectionName}.find({field: {$lt: value}})
+
+- $gte -> Greater Than or Equal
+  db.{collectionName}.find({field: {$gte: value}})
+
+- $lte -> Less Than or Equal
+  db.{collectionName}.find({field: {$lte: value}})
+
+- $in -> Includes (any match from array)
+  db.{collectionName}.find({field: {$in: [value1, value2, value3]}})
+
+- $nin -> Not Includes (no match from array)
+  db.{collectionName}.find({field: {$nin: [value1, value2, value3]}})
+
+Update Operators:
+- $set -> Update a field
+  db.{collectionName}.updateOne({field: value}, {$set: {fieldToUpdate: newValue}})
+
+- $unset -> Remove a field
+  db.{collectionName}.updateOne({field: value}, {$unset: {fieldToRemove: ""}})
+
+===========================================
+Class 4/18/2025 (Rescheduled Class 4/17)
+===========================================
+
+Array Operators:
+
+- $push -> Add elements to end of array
+  db.{collectionName}.updateOne({field: value}, {$push: {arrayField: valueToAdd}})
+
+- $pop -> Remove first or last element
+  db.{collectionName}.updateOne({field: value}, {$pop: {arrayField: 1}})
+    // 1 = remove last
+    // -1 = remove first
+    // ONLY these two numbers allowed
+
+- $addToSet -> Add only if value is not already in array
+  db.{collectionName}.updateOne({field: value}, {$addToSet: {arrayField: valueToAdd}})
+
+- $pull -> Remove elements matching a condition
+  db.{collectionName}.updateOne({field: value}, {$pull: {arrayField: valueToRemove}})
+
+- $each -> Add multiple elements with $push or $addToSet
+  db.{collectionName}.updateOne(
+    {field: value},
+    {$push: {arrayField: {$each: [value1, value2, value3]}}}
+  )
+
+Aggregations:
+- Process data in multiple stages
+- Example: Get the Data -> Triple its value -> Sort them
