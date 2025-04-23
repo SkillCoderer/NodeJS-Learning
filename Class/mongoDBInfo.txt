@@ -245,3 +245,78 @@ Aggregation -> involves multiple stages where the data will be passing through e
     { $match: { field: { $eq: value } } },
     { $out: "newCollectionName" }
   ])
+
+===========================================
+Class 4/21/2025
+===========================================
+
+Indexes -> Pointers to a particular Field value
+
+- Indexes improve query performance by allowing the database to quickly locate and access the data without scanning the entire collection.
+
+Types of Indexes:
+1. Single Field Index:
+  - Used to create an index on a single field to improve query performance for that field.
+  Ex:
+  db.{collectionName}.createIndex({ field: 1 }) // 1 for ascending, -1 for descending
+
+  - Query Example:
+    db.{collectionName}.find({ field: value }).explain("executionStats")
+    - `.find`: Retrieves documents from the collection that match the specified query.
+    - `.explain("executionStats")`: Provides detailed information about the query execution, including performance statistics.
+
+2. Multiple Field Index (Compound Index):
+  - Used to create an index on multiple fields to optimize queries that filter or sort by those fields.
+  Ex:
+    db.{collectionName}.createIndex({ field1: 1, field2: -1 })
+
+  - Query Example:
+    db.{collectionName}.find({ field1: value1, field2: value2 }).explain("executionStats")
+    - `.find`: Retrieves documents from the collection that match the specified query.
+    - `.explain("executionStats")`: Provides detailed information about the query execution, including performance statistics.
+
+3. dropIndex:
+  - Removes an index from a collection.
+  Ex:
+    db.{collectionName}.dropIndex({ field: 1 })
+
+  - To view existing indexes before dropping:
+    db.{collectionName}.getIndexes()
+    - `.getIndexes()`: Lists all indexes currently defined on the collection.
+
+Schema -> A schema in MongoDB defines the structure of documents in a collection, including field names, types, and validation rules.
+- Schema Example: 
+  db.createCollection("posts", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: [ "title", "body" ],
+      properties: {
+        title: {
+          bsonType: "string",
+          description: "Title of post - Required."
+        },
+        body: {
+          bsonType: "string",
+          description: "Body of post - Required."
+        },
+        category: {
+          bsonType: "string",
+          description: "Category of post - Optional."
+        },
+        likes: {
+          bsonType: "int",
+          description: "Post like count. Must be an integer - Optional."
+        },
+        tags: {
+          bsonType: ["string"],
+          description: "Must be an array of strings - Optional."
+        },
+        date: {
+          bsonType: "date",
+          description: "Must be a date - Optional."
+        }
+      }
+    }
+  }
+})
