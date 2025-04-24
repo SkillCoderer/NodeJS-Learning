@@ -247,7 +247,7 @@ Aggregation -> involves multiple stages where the data will be passing through e
   ])
 
 ===========================================
-Class 4/21/2025
+Class 4/22/2025
 ===========================================
 
 Indexes -> Pointers to a particular Field value
@@ -320,3 +320,17 @@ Schema -> A schema in MongoDB defines the structure of documents in a collection
     }
   }
 })
+
+===========================================
+Class 4/23/2025
+===========================================
+
+Connecting DB to Backend -> Driver or ORM
+
+  - Driver -> A low-level library that allows direct interaction with the database using queries and commands.
+
+  - ORM (Object Relational Mapper) -> tool that helps us to connect with the database and perform database operations using the backend language native objects.
+  Source we will use:
+    Mongoose -> https://mongoosejs.com/docs/api/mongoose.html#Mongoose.prototype.Decimal128
+    Code in ./ExpressJs/dbConfig.js'
+    Schemas in ./ExpressJs/models
