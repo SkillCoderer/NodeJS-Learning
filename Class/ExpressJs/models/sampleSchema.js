@@ -1,8 +1,8 @@
 // Class 4/23/2025
 
-const { Schema } = require("mongoose");
+const mongoose = require("mongoose");
 
-const mySchema = new Schema({
+const mySchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -20,4 +20,8 @@ const mySchema = new Schema({
   },
 });
 
-module.exports = mySchema;
+// Class 4/24/2025
+
+const sampleModel = mongoose.model("newCollection", mySchema);
+
+module.exports = sampleModel;

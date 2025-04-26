@@ -5,31 +5,40 @@ const mongoose = require("mongoose");
 const dbConfig = require("./dbConfig");
 const sampleSchema = require("./models/sampleSchema");
 const mySchema = require("./models/sampleSchema");
+const sampleModel = require("./models/sampleSchema");
 const server = express();
 const PORT = 5050;
 
 dbConfig(); // Connects to DB
 // Collection
-server.get("/createCollection", async (req, res) => {
+
+// Class 4/24/2025
+
+server.post("/createCollection", async (req, res) => {
   if (mongoose.connection.readyState === 1) {
     // connection.readyState -> Particular value tells us the connection status of the Database; 0 -> Disconnected, 1 -> Connected, 2 -> Connecting, 3 -> Disconnecting
     // .models -> Create the Collections for us, (name, )
-    await mongoose.model("newCollection", mySchema);
-    res.send("Collection created!");
+    const insertedData = await sampleModel.insertOne({
+      name: "ram",
+      email: "sample@gmail.com",
+      age: 12,
+    });
+    response.send(insertedData);
   } else {
-    console.warn("DB not connected");
+    console.warn("Failed to create Collection :c; DB not connected");
   }
 });
 
-server.get("/insertData", async (req, res) => {
+server.post("/insertData", async (req, res) => {
   if (mongoose.connection.readyState === 1) {
     // connection.readyState -> Particular value tells us the connection status of the Database; 0 -> Disconnected, 1 -> Connected, 2 -> Connecting, 3 -> Disconnecting
     // .models -> Create the Collections for us, (name, )
-    await mongoose.connection.db.collection("newCollection").insertOne({
+    const insertedData = await sampleModel.insertOne({
       name: "ram",
-      email: "something@gmail.com",
+      email: "sample@gmail.com",
+      age: 12,
     });
-    res.send("Collection created!");
+    res.send(insertedData);
   } else {
     console.warn("Failed to insert Data :c");
   }
